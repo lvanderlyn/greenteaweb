@@ -2,4 +2,17 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+
+  form(method='post', action='/', id="newform")
+    | Say something! :)
+    input(name='saidsomething', id="newinput")
+    button(type='submit')
+      | Done
+
+  ul(id="todolist")
+    each thing, i in things
+      li
+        div= thing
+        form(method='post', action='/delete/' + i, id="deletething") 
+          button
+            | Delete
